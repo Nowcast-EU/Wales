@@ -23,7 +23,41 @@
   <!-- Favicon -->
 <link rel="icon" type="image/png" href="WA_favicon.png" />
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
   <style>
+
+    .page-header {
+  font-family: "Poppins", system-ui, sans-serif;
+  max-width: 1000px;
+  margin: 1.5rem auto 1rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  font-size: 1.7rem;
+}
+
+.page-header .subtitle {
+  margin-top: 0.4rem;
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+  .page-header .subtitle {
+    font-size: 1.05rem;
+  }
+}
+
     html, body {
       margin: 0;
       padding: 0;
@@ -49,6 +83,15 @@
 
     /* --- Desktop view --- */
     @media (min-width: 768px) {
+
+        .page-header h1 {
+    font-size: 2.4rem;
+  }
+
+        .page-header .subtitle {
+    font-size: 1.05rem;
+  }
+      
       .flourish-container {
         /* Aspect ratio: 1 wide, 1.25 tall */
         aspect-ratio: 1 / 1;
@@ -75,6 +118,15 @@
 
     /* --- Mobile view --- */
     @media (max-width: 767px) {
+
+        .page-header h1 {
+    font-size: 1.25rem;
+  }
+
+        .page-header .subtitle {
+    font-size: 0.75rem;
+  }
+      
       .flourish-container {
         aspect-ratio: 1 / 1.3;
         width: 100%;
@@ -95,9 +147,22 @@
         height: 100%;
       }
     }
+
+    a {
+  color: inherit;
+}
+
   </style>
 </head>
 <body>
+  
+  <header class="page-header">
+  <h1>Nowcast UK Senedd Projection</h1>
+  <p class="subtitle">
+    <b>Based on <a href="https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Senedd_election">Welsh polling averages</a> • January 6, 2025</b>
+  </p>
+</header>
+
   <div class="flourish-container">
     <iframe src="https://flo.uri.sh/visualisation/27084487/embed" scrolling="no" frameborder="0"></iframe>
   </div>
