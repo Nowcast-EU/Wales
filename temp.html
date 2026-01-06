@@ -53,17 +53,6 @@
   line-height: 1.4;
 }
 
-/* Desktop refinement */
-@media (min-width: 768px) {
-  .page-header h1 {
-    font-size: 2.4rem;
-  }
-
-  @media (max-width: 767px) {
-  .page-header h1 {
-    font-size: 2.0rem;
-  }
-
   .page-header .subtitle {
     font-size: 1.05rem;
   }
@@ -94,6 +83,11 @@
 
     /* --- Desktop view --- */
     @media (min-width: 768px) {
+
+        .page-header h1 {
+    font-size: 2.4rem;
+  }
+      
       .flourish-container {
         /* Aspect ratio: 1 wide, 1.25 tall */
         aspect-ratio: 1 / 1;
@@ -120,6 +114,11 @@
 
     /* --- Mobile view --- */
     @media (max-width: 767px) {
+
+        .page-header h1 {
+    font-size: 2.0rem;
+  }
+      
       .flourish-container {
         aspect-ratio: 1 / 1.3;
         width: 100%;
