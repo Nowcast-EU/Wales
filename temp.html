@@ -46,40 +46,56 @@ html, body {
   text-align: left;
 }
 
+/* Flex row: text left, logo right */
 .title-row {
   display: flex;
-  align-items: center;
+  align-items: stretch;     /* logo matches text block height */
+  overflow: hidden;
+}
+
+/* Text block (title + subtitle scale together) */
+.title-text {
+  min-width: 0;             /* CRITICAL for shrinking */
   white-space: nowrap;
   overflow: hidden;
 }
 
-.page-header h1 {
+/* Title */
+.title-text h1 {
   margin: 0;
-  min-width: 0;
+  font-size: clamp(1.4rem, 4.5vw, 4rem);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: clamp(1.4rem, 4.5vw, 4rem);
 }
 
+/* Subtitle */
+.subtitle {
+  margin: 0;
+  font-size: clamp(0.9rem, 2.8vw, 1.6rem);
+  font-weight: 400;         /* NOT bold */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Logo matches total text height */
 .title-logo {
-  height: 1em;
-  margin-left: auto;
+  height: 100%;
+  margin-left: auto;        /* push to right */
   flex-shrink: 0;
+  object-fit: contain;
 }
 
 /* Mobile hard constraint */
 @media (max-width: 480px) {
-  .page-header h1 {
-    font-size: clamp(0.95rem, 6.5vw, 2.5rem);
+  .title-text h1 {
+    font-size: clamp(1rem, 6vw, 2.5rem);
   }
-}
 
-.subtitle {
-  margin: 0.25rem 0 0;
-  font-size: clamp(1rem, 2.5vw, 1.6rem);
-  font-weight: 400;            /* NOT bold */
-  white-space: nowrap;
+  .subtitle {
+    font-size: clamp(0.8rem, 4vw, 1.2rem);
+  }
 }
 
 /* ===== EMBEDS ===== */
@@ -148,13 +164,15 @@ a {
   
 <header class="page-header">
   <div class="title-row">
-    <h1>Nowcast UK Senedd Projection</h1>
+    <div class="title-text">
+      <h1>Nowcast UK Senedd Projection</h1>
+      <p class="subtitle">
+        Based on <a href="https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Senedd_election">Welsh polling averages</a> • January 6, 2025
+      </p>
+    </div>
+
     <img src="WalesLogo.png" alt="Logo" class="title-logo">
   </div>
-
-  <p class="subtitle">
-    Based on <a href="https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Senedd_election">Welsh polling averages</a> • January 6, 2025
-  </p>
 </header>
 
   <div class="flourish-container">
