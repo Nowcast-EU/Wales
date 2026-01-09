@@ -37,57 +37,14 @@ html, body {
   font-family: system-ui, sans-serif;
 }
 
-/* ===== HEADER ===== */
-.page-header {
-  font-family: "Poppins", system-ui, sans-serif;
-  width: 100%;
-  padding: 0 1rem;    /* left/right gutter */
-  text-align: left;
-}
-
-/* Flex row: text block left, logo right */
-.title-row {
-  display: flex;
-  align-items: flex-start; /* logo aligns with top of text block */
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-/* Wrapper for title + subtitle */
-.title-text {
-  display: inline-block;   /* defines the block height for logo */
-  min-width: 0;            /* critical for shrinking in flexbox */
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-/* Title */
-.title-text h1 {
-  margin: 0;
-  font-size: clamp(1.2rem, 4.5vw, 4rem);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Subtitle */
-.subtitle {
-  margin: 0;
-  font-size: clamp(0.7rem, 2.8vw, 1.6rem);
-  font-weight: 400;         /* NOT bold */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-top: 0.15em;       /* small spacing under title */
-}
-
-/* Logo scales to match combined title + subtitle height */
-.title-logo {
-  height: 1.5em;            /* relative to font-size of parent */
-  max-height: 4rem;         /* cap max size for desktop */
-  margin-left: 0.5rem;      /* space from text */
-  flex-shrink: 0;
-  object-fit: contain;
+.floating-logo {
+  position: fixed;        /* stays on screen when scrolling */
+  top: 1rem;              /* distance from top of viewport */
+  right: 1rem;            /* distance from right edge */
+  height: 4rem;           /* fixed size, adjust as needed */
+  width: auto;            /* keep aspect ratio */
+  z-index: 9999;          /* sits above everything else */
+  pointer-events: none;   /* allows clicks to go through the logo */
 }
 
 /* ===== EMBEDS ===== */
@@ -126,22 +83,6 @@ iframe {
 
 /* ===== MOBILE ===== */
 @media (max-width: 767px) {
-  .page-header {
-    width: 90vw;  /* more room for scaling */
-  }
-
-  .title-text h1 {
-    font-size: clamp(1rem, 6vw, 2.5rem);
-  }
-
-  .subtitle {
-    font-size: clamp(0.8rem, 4vw, 1.2rem);
-  }
-
-  .title-logo {
-    height: 1.2em;          /* smaller logo on narrow screens */
-    max-height: 2.5rem;
-  }
 
   .flourish-container {
     aspect-ratio: 1 / 1.3;
@@ -165,26 +106,17 @@ a {
 </style>
 </head>
 <body>
-  
-<header class="page-header">
-  <div class="title-row">
-    <div class="title-text">
-      <h1>Nowcast UK Senedd Projection</h1>
-      <p class="subtitle">
-        Based on <a href="https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Senedd_election">Welsh polling averages</a> • January 6, 2025
-      </p>
-    </div>
+  <!-- Logo overlay -->
+  <img src="WalesLogo.png" alt="Logo" class="floating-logo">
 
-    <img src="WalesLogo.png" alt="Logo" class="title-logo">
-  </div>
-</header>
-
+  <!-- Flourish embed -->
   <div class="flourish-container">
     <iframe src="https://flo.uri.sh/visualisation/27084487/embed" scrolling="no" frameborder="0"></iframe>
   </div>
   
-    <div class="bar-container">
+  <div class="bar-container">
     <iframe src="https://flo.uri.sh/visualisation/27084497/embed" scrolling="no" frameborder="0"></iframe>
   </div>
 </body>
+
 </html>
