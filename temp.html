@@ -37,14 +37,24 @@ html, body {
   font-family: system-ui, sans-serif;
 }
 
-.floating-logo {
-  position: fixed;        /* stays on screen when scrolling */
-  top: 1rem;              /* distance from top of viewport */
-  right: 1rem;            /* distance from right edge */
-  height: 4rem;           /* fixed size, adjust as needed */
-  width: auto;            /* keep aspect ratio */
-  z-index: 9999;          /* sits above everything else */
-  pointer-events: none;   /* allows clicks to go through the logo */
+.logo-container {
+  position: relative; /* container for absolute positioning */
+  width: 100%;        /* full width of page */
+}
+
+.page-logo {
+  position: absolute; /* position relative to .logo-container */
+  top: 1rem;          /* distance from top of page */
+  right: 1rem;        /* distance from right edge */
+  height: 4rem;       /* adjust logo size */
+  width: auto;        /* maintain aspect ratio */
+  z-index: 10;        /* above the Flourish content */
+}
+
+  @media (max-width: 767px) {
+  .page-logo {
+    height: 2.5rem;
+  }
 }
 
 /* ===== EMBEDS ===== */
@@ -106,10 +116,10 @@ a {
 </style>
 </head>
 <body>
-  <!-- Logo overlay -->
-  <img src="WalesLogo.png" alt="Logo" class="floating-logo">
+  <div class="logo-container">
+    <img src="WalesLogo.png" alt="Logo" class="page-logo">
+  </div>
 
-  <!-- Flourish embed -->
   <div class="flourish-container">
     <iframe src="https://flo.uri.sh/visualisation/27084487/embed" scrolling="no" frameborder="0"></iframe>
   </div>
