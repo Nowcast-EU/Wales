@@ -50,6 +50,7 @@
   width: 97%;
   white-space: nowrap;
   font-size: clamp(1.5rem, 3vw, 3rem);
+  font-weight: 500
   margin: 0 auto;
 }
 
@@ -98,6 +99,50 @@
 
     /* --- Desktop view --- */
     @media (min-width: 768px) {
+
+          .page-header {
+  font-family: "Poppins", system-ui, sans-serif;
+  width: 97%;
+  white-space: nowrap;
+  font-size: clamp(1.5rem, 4vw, 4rem);
+  margin: 0 auto;
+  text-align: left;
+}
+
+.page-header h1 {
+  width: 97%;
+  white-space: nowrap;
+  font-size: clamp(1.5rem, 4vw, 4rem);
+  margin: 0 auto;
+}
+
+.page-header .subtitle {
+  width: 97%;
+  white-space: nowrap;
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  font-weight: 500
+  margin: 0 auto;
+}
+
+.title-row {
+  width: 97%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.page-header h1 {
+  white-space: nowrap;
+  font-size: clamp(1.5rem, 4vw, 4rem);
+  margin: 0;
+}
+
+.title-logo {
+  height: 1em;        /* EXACT text height match */
+  margin-left: 0.75em;
+  flex-shrink: 0;
+}
       
       .flourish-container {
         /* Aspect ratio: 1 wide, 1.25 tall */
@@ -125,6 +170,50 @@
 
     /* --- Mobile view --- */
     @media (max-width: 767px) {
+
+          .page-header {
+  font-family: "Poppins", system-ui, sans-serif;
+  width: 60%;
+  white-space: nowrap;
+  font-size: clamp(1.5rem, 4vw, 4rem);
+  margin: 0 auto;
+  text-align: left;
+}
+
+.page-header h1 {
+  width: 60%;
+  white-space: nowrap;
+  font-size: clamp(1.5rem, 4vw, 4rem);
+  margin: 0 auto;
+}
+
+.page-header .subtitle {
+  width: 60%;
+  white-space: nowrap;
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  font-weight: 500
+  margin: 0 auto;
+}
+
+.title-row {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.page-header h1 {
+  white-space: nowrap;
+  font-size: clamp(1.5rem, 4vw, 4rem);
+  margin: 0;
+}
+
+.title-logo {
+  height: 1em;        /* EXACT text height match */
+  margin-left: 0.75em;
+  flex-shrink: 0;
+}
 
       .flourish-container {
         aspect-ratio: 1 / 1.3;
