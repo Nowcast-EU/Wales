@@ -28,8 +28,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 
-  <style>
-
+<style>
+/* ===== GLOBAL ===== */
 html, body {
   margin: 0;
   padding: 0;
@@ -38,24 +38,25 @@ html, body {
 }
 
 /* ===== HEADER ===== */
-
 .page-header {
   font-family: "Poppins", system-ui, sans-serif;
   width: 100%;
-  padding: 0 1rem;
+  padding: 0 1rem;    /* left/right gutter */
   text-align: left;
 }
 
-/* Flex row: text left, logo right */
+/* Flex row: text block left, logo right */
 .title-row {
   display: flex;
-  align-items: stretch;     /* logo matches text block height */
+  align-items: flex-start; /* logo aligns with top of text block */
+  white-space: nowrap;
   overflow: hidden;
 }
 
-/* Text block (title + subtitle scale together) */
+/* Wrapper for title + subtitle */
 .title-text {
-  min-width: 0;             /* CRITICAL for shrinking */
+  display: inline-block;   /* defines the block height for logo */
+  min-width: 0;            /* critical for shrinking in flexbox */
   white-space: nowrap;
   overflow: hidden;
 }
@@ -77,29 +78,19 @@ html, body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-top: 0.15em;       /* small spacing under title */
 }
 
-/* Logo matches total text height */
+/* Logo scales to match combined title + subtitle height */
 .title-logo {
-  height: 2.2em;
-  margin-left: auto;        /* push to right */
+  height: auto;
+  max-height: 100%;
+  margin-left: 0.5rem;
   flex-shrink: 0;
   object-fit: contain;
 }
 
-/* Mobile hard constraint */
-@media (max-width: 480px) {
-  .title-text h1 {
-    font-size: clamp(1rem, 6vw, 2.5rem);
-  }
-
-  .subtitle {
-    font-size: clamp(0.8rem, 4vw, 1.2rem);
-  }
-}
-
 /* ===== EMBEDS ===== */
-
 .flourish-container,
 .bar-container {
   width: 100%;
@@ -112,7 +103,7 @@ iframe {
   display: block;
 }
 
-/* Desktop */
+/* ===== DESKTOP ===== */
 @media (min-width: 768px) {
   .flourish-container {
     aspect-ratio: 1 / 1;
@@ -133,10 +124,22 @@ iframe {
   }
 }
 
-/* Mobile */
+/* ===== MOBILE ===== */
 @media (max-width: 767px) {
   .page-header {
-    width: 90vw;               /* more room on mobile */
+    width: 90vw;  /* more room for scaling */
+  }
+
+  .title-text h1 {
+    font-size: clamp(1rem, 6vw, 2.5rem);
+  }
+
+  .subtitle {
+    font-size: clamp(0.8rem, 4vw, 1.2rem);
+  }
+
+  .title-logo {
+    max-height: 2.5em;  /* prevents it from being huge on tiny screens */
   }
 
   .flourish-container {
@@ -154,11 +157,11 @@ iframe {
   }
 }
 
+/* ===== LINKS ===== */
 a {
   color: inherit;
 }
-
-  </style>
+</style>
 </head>
 <body>
   
