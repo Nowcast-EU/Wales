@@ -53,6 +53,24 @@
   margin: 0 auto;
 }
 
+.title-row {
+  width: 97%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.page-header h1 {
+  white-space: nowrap;
+  font-size: clamp(1.5rem, 4vw, 4rem);
+  margin: 0;
+}
+
+.title-logo {
+  height: 1em;        /* EXACT text height match */
+  margin-left: 0.75em;
+  flex-shrink: 0;
 }
 
     html, body {
@@ -137,8 +155,12 @@
 </head>
 <body>
   
-  <header class="page-header">
-  <h1>Nowcast UK Senedd Projection</h1>
+<header class="page-header">
+  <div class="title-row">
+    <h1>Nowcast UK Senedd Projection</h1>
+    <img src="WalesLogo.png" alt="Logo" class="title-logo">
+  </div>
+
   <p class="subtitle">
     <b>Based on <a href="https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Senedd_election">Welsh polling averages</a> • January 6, 2025</b>
   </p>
