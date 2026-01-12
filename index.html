@@ -51,6 +51,12 @@ html, body {
   z-index: 10;        /* above the Flourish content */
 }
 
+  .divider {
+  border: none;
+  border-top: 1px solid #d0d0d0;
+  margin: 20px 0;
+}
+
   @media (max-width: 767px) {
   .page-logo {
     height: 2.5rem;
@@ -80,13 +86,13 @@ iframe {
   }
 
   .bar-container {
-    aspect-ratio: 3 / 1;
+    aspect-ratio: 4 / 1;
     max-width: 1000px;
     margin: 0 auto;
   }
 
     .graph-container {
-    aspect-ratio: 2 / 1;
+    aspect-ratio: 1.7 / 1;
     max-width: 1000px;
     margin: 0 auto;
   }
@@ -106,11 +112,11 @@ iframe {
   }
 
   .bar-container {
-    aspect-ratio: 3.4 / 2;
+    aspect-ratio: 4 / 2;
   }
 
     .graph-container {
-    aspect-ratio: 3.1 / 2;
+    aspect-ratio: 2.5 / 2;
   }
 
   iframe {
@@ -134,10 +140,14 @@ a {
   <div class="flourish-container">
     <iframe src="https://flo.uri.sh/visualisation/27084487/embed" scrolling="no" frameborder="0"></iframe>
   </div>
+
+  <hr class="divider">
   
   <div class="bar-container">
     <iframe src="https://flo.uri.sh/visualisation/27084497/embed" scrolling="no" frameborder="0"></iframe>
   </div>
+
+  <hr class="divider">
 
     <div class="graph-container">
     <iframe src="https://flo.uri.sh/visualisation/27177225/embed" scrolling="no" frameborder="0"></iframe>
