@@ -1,1 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🏴󠁧󠁢󠁷󠁬󠁳󠁿 | Nowcast UK Senedd Projection</title>
 
+  <!-- Social / Thumbnail preview -->
+  <meta property="og:title" content="🏴󠁧󠁢󠁷󠁬󠁳󠁿 | Nowcast UK Senedd Projection">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="https://nowcast-eu.github.io/Wales/thumbnail.png">
+  <meta property="og:url" content="https://nowcast-eu.github.io/Wales/">
+  <meta property="og:type" content="website">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="🏴󠁧󠁢󠁷󠁬󠁳󠁿 | Nowcast UK Senedd Projection">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:image" content="https://nowcast-eu.github.io/Wales/thumbnail.png">
+
+  <!-- Favicon -->
+<link rel="icon" type="image/png" href="WA_favicon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<style>
+/* ===== GLOBAL ===== */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  font-family: system-ui, sans-serif;
+}
+
+.logo-container {
+  position: relative; /* container for absolute positioning */
+  width: 100%;        /* full width of page */
+}
+
+.page-logo {
+  position: absolute; /* position relative to .logo-container */
+  top: 0.3rem;          /* distance from top of page */
+  right: 0.3rem;        /* distance from right edge */
+  height: 4rem;       /* adjust logo size */
+  width: auto;        /* maintain aspect ratio */
+  z-index: 10;        /* above the Flourish content */
+}
+
+  .divider {
+  border: none;
+  border-top: 1px solid #d0d0d0;
+  margin: 20px 0;
+}
+
+  @media (max-width: 767px) {
+  .page-logo {
+    height: 2.5rem;
+  }
+}
+
+/* ===== EMBEDS ===== */
+.flourish-container,
+.graph-container,
+.bar-container {
+  width: 100%;
+  position: relative;
+}
+
+iframe {
+  width: 100%;
+  border: none;
+  display: block;
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width: 768px) {
+  .flourish-container {
+    aspect-ratio: 1 / 1;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .bar-container {
+    aspect-ratio: 4 / 1;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+    .graph-container {
+    aspect-ratio: 1.7 / 1;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  iframe {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+  }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 767px) {
+
+  .flourish-container {
+    aspect-ratio: 1 / 1.3;
+  }
+
+  .bar-container {
+    aspect-ratio: 4 / 2;
+  }
+
+    .graph-container {
+    aspect-ratio: 2.5 / 2;
+  }
+
+  iframe {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+  }
+}
+
+/* ===== LINKS ===== */
+a {
+  color: inherit;
+}
+</style>
+</head>
+<body>
+  <div class="logo-container">
+    <img src="WalesLogo.png" alt="Logo" class="page-logo">
+  </div>
+
+  <div class="flourish-container">
+    <iframe src="https://flo.uri.sh/visualisation/27198697/embed" scrolling="no" frameborder="0"></iframe>
+  </div>
+  
+  <div class="bar-container">
+    <iframe src="https://flo.uri.sh/visualisation/27198700/embed" scrolling="no" frameborder="0"></iframe>
+  </div>
+
+    <div class="graph-container">
+    <iframe src="https://flo.uri.sh/visualisation/27198689/embed" scrolling="no" frameborder="0"></iframe>
+  </div>
+</body>
+
+</html>
