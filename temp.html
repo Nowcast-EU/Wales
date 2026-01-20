@@ -77,6 +77,25 @@ iframe {
   display: block;
 }
 
+  /* ===== MAJORITY LINE (BAR CHART ONLY) ===== */
+.majority-line {
+  position: absolute;
+  left: 50%;                 /* 50% = majority threshold */
+  top: 50%;                  /* start halfway down */
+  bottom: 0;                 /* extend to bottom */
+  width: 2px;
+  background: rgba(0, 0, 0, 0.45);
+  transform: translateX(-50%);
+  z-index: 5;
+  pointer-events: none;      /* critical for iframe interaction */
+}
+
+  .majority-line {
+  background: none;
+  border-left: 2px dashed rgba(0, 0, 0, 0.45);
+}
+
+
 /* ===== DESKTOP ===== */
 @media (min-width: 768px) {
   .flourish-container {
@@ -141,9 +160,14 @@ a {
     <iframe src="https://flo.uri.sh/visualisation/27084487/embed" scrolling="no" frameborder="0"></iframe>
   </div>
   
-  <div class="bar-container">
-    <iframe src="https://flo.uri.sh/visualisation/27084497/embed" scrolling="no" frameborder="0"></iframe>
-  </div>
+<div class="bar-container">
+  <div class="majority-line"></div>
+
+  <iframe src="https://flo.uri.sh/visualisation/27084497/embed"
+          scrolling="no"
+          frameborder="0"></iframe>
+</div>
+
 
     <div class="graph-container">
     <iframe src="https://flo.uri.sh/visualisation/27177225/embed" scrolling="no" frameborder="0"></iframe>
