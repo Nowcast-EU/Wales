@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🐉 | Nowcast UK Senedd Projection</title>
+  <title>🏴󠁧󠁢󠁷󠁬󠁳󠁿 | Nowcast UK Senedd Projection</title>
 
   <!-- Social / Thumbnail preview -->
-  <meta property="og:title" content="🐉 | Nowcast UK Senedd Projection">
+  <meta property="og:title" content="🏴󠁧󠁢󠁷󠁬󠁳󠁿 | Nowcast UK Senedd Projection">
   <meta property="og:description" content="">
   <meta property="og:image" content="https://nowcast-eu.github.io/Wales/thumbnail.png">
   <meta property="og:url" content="https://nowcast-eu.github.io/Wales/">
@@ -16,7 +16,7 @@
   <meta property="og:image:type" content="image/png">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="🐉 | Nowcast UK Senedd Projection">
+  <meta name="twitter:title" content="🏴󠁧󠁢󠁷󠁬󠁳󠁿 | Nowcast UK Senedd Projection">
   <meta name="twitter:description" content="">
   <meta name="twitter:image" content="https://nowcast-eu.github.io/Wales/thumbnail.png">
 
@@ -44,11 +44,17 @@ html, body {
 
 .page-logo {
   position: absolute; /* position relative to .logo-container */
-  top: 1rem;          /* distance from top of page */
-  right: 1rem;        /* distance from right edge */
+  top: 0.3rem;          /* distance from top of page */
+  right: 0.3rem;        /* distance from right edge */
   height: 4rem;       /* adjust logo size */
   width: auto;        /* maintain aspect ratio */
   z-index: 10;        /* above the Flourish content */
+}
+
+  .divider {
+  border: none;
+  border-top: 1px solid #d0d0d0;
+  margin: 20px 0;
 }
 
   @media (max-width: 767px) {
@@ -59,6 +65,7 @@ html, body {
 
 /* ===== EMBEDS ===== */
 .flourish-container,
+.graph-container,
 .bar-container {
   width: 100%;
   position: relative;
@@ -79,7 +86,13 @@ iframe {
   }
 
   .bar-container {
-    aspect-ratio: 2.8 / 1;
+    aspect-ratio: 4 / 1;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+    .graph-container {
+    aspect-ratio: 1.7 / 1;
     max-width: 1000px;
     margin: 0 auto;
   }
@@ -99,7 +112,11 @@ iframe {
   }
 
   .bar-container {
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 4 / 2;
+  }
+
+    .graph-container {
+    aspect-ratio: 2.5 / 2;
   }
 
   iframe {
@@ -126,6 +143,10 @@ a {
   
   <div class="bar-container">
     <iframe src="https://flo.uri.sh/visualisation/27084497/embed" scrolling="no" frameborder="0"></iframe>
+  </div>
+
+    <div class="graph-container">
+    <iframe src="https://flo.uri.sh/visualisation/27177225/embed" scrolling="no" frameborder="0"></iframe>
   </div>
 </body>
 
