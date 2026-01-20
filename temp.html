@@ -81,18 +81,13 @@ iframe {
 .majority-line {
   position: absolute;
   left: 50%;                 /* 50% = majority threshold */
-  top: 70%;                  /* start halfway down */
-  bottom: 10%;                 /* extend to bottom */
+  top: 60%;                  /* start halfway down */
+  bottom: 20%;                 /* extend to bottom */
   width: 2px;
-  background: rgba(0, 0, 0, 0.45);
+  background: #000000;
   transform: translateX(-50%);
   z-index: 5;
   pointer-events: none;      /* critical for iframe interaction */
-}
-
-  .majority-line {
-  background: none;
-  border-left: 2px dashed rgba(0, 0, 0, 0.45);
 }
 
   /* ===== MAJORITY LABEL ===== */
