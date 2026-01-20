@@ -95,6 +95,21 @@ iframe {
   border-left: 2px dashed rgba(0, 0, 0, 0.45);
 }
 
+  /* ===== MAJORITY LABEL ===== */
+.majority-label {
+  position: absolute;
+  top: 100%;              /* directly beneath the line */
+  margin-top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+
 
 /* ===== DESKTOP ===== */
 @media (min-width: 768px) {
@@ -161,7 +176,9 @@ a {
   </div>
   
 <div class="bar-container">
-  <div class="majority-line"></div>
+<div class="majority-line">
+  <span class="majority-label">Majority</span>
+</div>
 
   <iframe src="https://flo.uri.sh/visualisation/27084497/embed"
           scrolling="no"
