@@ -77,6 +77,33 @@ iframe {
   display: block;
 }
 
+    /* ===== MAJORITY LINE (BAR CHART ONLY) ===== */
+.majority-line {
+  position: absolute;
+  left: 50%;                 /* 50% = majority threshold */
+  top: 60%;                  /* start halfway down */
+  bottom: 12%;                 /* extend to bottom */
+  width: 2px;
+  background: #000000;
+  transform: translateX(-50%);
+  z-index: 5;
+  pointer-events: none;      /* critical for iframe interaction */
+}
+
+  /* ===== MAJORITY LABEL ===== */
+.majority-label {
+  position: absolute;
+  top: 100%;              /* directly beneath the line */
+  margin-top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
 /* ===== DESKTOP ===== */
 @media (min-width: 768px) {
   .flourish-container {
@@ -87,12 +114,16 @@ iframe {
 
   .bar-container {
     aspect-ratio: 4 / 1;
+    transform: translateY(-35px);
+    z-index: 10;
     max-width: 1000px;
     margin: 0 auto;
   }
 
     .graph-container {
     aspect-ratio: 1.7 / 1;
+    transform: translateY(-35px);
+    z-index: 10;
     max-width: 1000px;
     margin: 0 auto;
   }
@@ -113,10 +144,14 @@ iframe {
 
   .bar-container {
     aspect-ratio: 4 / 2;
+    transform: translateY(-30px);
+    z-index: 10;
   }
 
     .graph-container {
     aspect-ratio: 2.5 / 2;
+    transform: translateY(-30px);
+    z-index: 10;
   }
 
   iframe {
@@ -140,10 +175,16 @@ a {
   <div class="flourish-container">
     <iframe src="https://flo.uri.sh/visualisation/27198697/embed" scrolling="no" frameborder="0"></iframe>
   </div>
-  
+
   <div class="bar-container">
-    <iframe src="https://flo.uri.sh/visualisation/27198700/embed" scrolling="no" frameborder="0"></iframe>
-  </div>
+<div class="majority-line">
+  <span class="majority-label">Majority</span>
+</div>
+
+  <iframe src="https://flo.uri.sh/visualisation/27198700/embed"
+          scrolling="no"
+          frameborder="0"></iframe>
+</div>
 
     <div class="graph-container">
     <iframe src="https://flo.uri.sh/visualisation/27198689/embed" scrolling="no" frameborder="0"></iframe>
