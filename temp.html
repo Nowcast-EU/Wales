@@ -186,15 +186,13 @@
     }
 
     /* AVG line */
-    .avg-line {
-      position: absolute;
-      width: 2px;
-      height: calc(100% + 5px);
-      background: #000000;
-      border-radius: 0;
-      transform: translateX(-1px);
-      z-index: 5;
-    }
+.avg-line {
+  position: absolute;
+  width: 1px;
+  height: calc(100% + 5px);
+  background: #000;
+  z-index: 5;
+}
 
     /* seat count */
     .seat-info {
@@ -352,9 +350,15 @@
       background: ${party.color};
     `;
 
-    const avgLine = document.createElement("div");
-    avgLine.className = "avg-line";
-    avgLine.style.cssText = `left: ${pct(avg)}%;`;
+const avgLine = document.createElement("div");
+avgLine.className = "avg-line";
+
+const px = Math.round(
+  ((avg - domainMin) / (domainMax - domainMin)) *
+  trackWrap.offsetWidth
+);
+
+avgLine.style.left = `${px}px`;
 
     trackWrap.append(trackBg, rangeOuter, rangeMid, rangeInner, avgLine);
 
