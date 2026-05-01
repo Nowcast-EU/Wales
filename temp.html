@@ -3,191 +3,404 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🏴󠁧󠁢󠁷󠁬󠁳󠁿 | Nowcast UK Senedd Projection</title>
+  <title>Seat Projection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <!-- Social / Thumbnail preview -->
-  <meta property="og:title" content="🏴󠁧󠁢󠁷󠁬󠁳󠁿 | Nowcast UK Senedd Projection">
-  <meta property="og:description" content="">
-  <meta property="og:image" content="https://nowcast-eu.github.io/Wales/thumbnail.png">
-  <meta property="og:url" content="https://nowcast-eu.github.io/Wales/">
-  <meta property="og:type" content="website">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/png">
+    :root {
+      --bg: #f5f4f0;
+      --surface: #ffffff;
+      --border: #e4e2db;
+      --text-primary: #1a1a1a;
+      --text-muted: #888;
+      --track: #ebebeb;
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="🏴󠁧󠁢󠁷󠁬󠁳󠁿 | Nowcast UK Senedd Projection">
-  <meta name="twitter:description" content="">
-  <meta name="twitter:image" content="https://nowcast-eu.github.io/Wales/thumbnail.png">
+      --p1: #e63946;
+      --p2: #457b9d;
+      --p3: #2a9d8f;
+      --p4: #f4a261;
+      --p5: #6a994e;
+      --p6: #9b5de5;
 
-  <!-- Favicon -->
-<link rel="icon" type="image/png" href="WA_favicon.png" />
+      --majority: 48;
+      --total-seats: 96;
+    }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 48px 24px;
+    }
 
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0;
+      padding: 36px 40px;
+      width: 100%;
+      max-width: 860px;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+    }
 
-<style>
-/* ===== GLOBAL ===== */
-html, body {
-  margin: 0;
-  padding: 0;
-  background: #ffffff;
-  font-family: system-ui, sans-serif;
-}
+    header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
 
-.logo-container {
-  position: relative; /* container for absolute positioning */
-  width: 100%;        /* full width of page */
-}
+    header h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
 
-.page-logo {
-  position: absolute; /* position relative to .logo-container */
-  top: 0.3rem;          /* distance from top of page */
-  right: 0.3rem;        /* distance from right edge */
-  height: 4rem;       /* adjust logo size */
-  width: auto;        /* maintain aspect ratio */
-  z-index: 10;        /* above the Flourish content */
-}
+    header p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
 
-  .divider {
-  border: none;
-  border-top: 1px solid #d0d0d0;
-  margin: 20px 0;
-}
+    /* ── Chart area ── */
+    .chart {
+      position: relative;
+    }
 
-  @media (max-width: 767px) {
-  .page-logo {
-    height: 2.5rem;
-  }
-}
-
-/* ===== EMBEDS ===== */
-.flourish-container,
-.graph-container,
-.bar-container {
-  width: 100%;
-  position: relative;
-}
-
-iframe {
-  width: 100%;
-  border: none;
-  display: block;
-}
-
-  /* ===== MAJORITY LINE (BAR CHART ONLY) ===== */
-.majority-line {
-  position: absolute;
-  left: 50%;                 /* 50% = majority threshold */
-  top: 60%;                  /* start halfway down */
-  bottom: 12%;                 /* extend to bottom */
-  width: 2px;
-  background: #000000;
-  transform: translateX(-50%);
-  z-index: 5;
-  pointer-events: none;      /* critical for iframe interaction */
-}
-
-  /* ===== MAJORITY LABEL ===== */
-.majority-label {
-  position: absolute;
-  top: 100%;              /* directly beneath the line */
-  margin-top: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(0, 0, 0, 0.6);
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-
-
-/* ===== DESKTOP ===== */
-@media (min-width: 768px) {
-  .flourish-container {
-    aspect-ratio: 1 / 1;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .bar-container {
-    aspect-ratio: 4 / 1;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-    .graph-container {
-    aspect-ratio: 1.7 / 1;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  iframe {
-    position: absolute;
-    inset: 0;
-    height: 100%;
-  }
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 767px) {
-
+    /* majority line sits behind all rows */
     .majority-line {
-    bottom: 15%;          /* mobile bottom */
-  }
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: repeating-linear-gradient(
+        to bottom,
+        #bbb 0px, #bbb 5px,
+        transparent 5px, transparent 10px
+      );
+      z-index: 2;
+      pointer-events: none;
+    }
 
-  .flourish-container {
-    aspect-ratio: 1 / 1.3;
-  }
+    .majority-label {
+      position: absolute;
+      top: -22px;
+      transform: translateX(-50%);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
 
-  .bar-container {
-    aspect-ratio: 4 / 2;
-  }
+    /* ── Each party row ── */
+    .party-row {
+      display: grid;
+      grid-template-columns: 110px 1fr 130px;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      animation: fadeIn 0.4s ease both;
+    }
 
-    .graph-container {
-    aspect-ratio: 2.5 / 2;
-  }
+    .party-row:last-child { border-bottom: none; }
 
-  iframe {
-    position: absolute;
-    inset: 0;
-    height: 100%;
-  }
-}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-/* ===== LINKS ===== */
-a {
-  color: inherit;
-}
-</style>
+    .party-row:nth-child(1) { animation-delay: 0.05s; }
+    .party-row:nth-child(2) { animation-delay: 0.10s; }
+    .party-row:nth-child(3) { animation-delay: 0.15s; }
+    .party-row:nth-child(4) { animation-delay: 0.20s; }
+    .party-row:nth-child(5) { animation-delay: 0.25s; }
+    .party-row:nth-child(6) { animation-delay: 0.30s; }
+
+    /* label */
+    .party-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .party-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .party-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* track */
+    .track-wrap {
+      position: relative;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      overflow: visible;
+    }
+
+    .track-bg {
+      position: absolute;
+      inset: 0;
+      border-radius: 0;
+      background: var(--track);
+    }
+
+    /* 5th–95th outer band */
+    .range-outer {
+      position: absolute;
+      height: 100%;
+      border-radius: 0;
+      opacity: 0.25;
+    }
+
+    /* 15th–85th mid band */
+    .range-mid {
+      position: absolute;
+      height: 100%;
+      border-radius: 0;
+      opacity: 0.55;
+    }
+
+    /* 25th–75th inner band */
+    .range-inner {
+      position: absolute;
+      height: 100%;
+      border-radius: 0;
+      opacity: 0.9;
+    }
+
+    /* AVG line */
+    .avg-line {
+      position: absolute;
+      width: 3px;
+      height: calc(100% + 10px);
+      background: #000000;
+      border-radius: 0;
+      transform: translateX(-50%);
+      z-index: 5;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+
+    /* seat count */
+    .seat-info {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1px;
+    }
+
+    .seat-count {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .seat-range-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Majority legend ── */
+    .legend {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .legend-line {
+      width: 24px; height: 1px;
+      background: repeating-linear-gradient(
+        to right, #999 0px, #999 4px, transparent 4px, transparent 8px
+      );
+    }
+
+    /* tooltip */
+    .tooltip {
+      position: fixed;
+      background: #1a1a1a;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.72rem;
+      padding: 8px 12px;
+      border-radius: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      z-index: 100;
+      white-space: nowrap;
+      line-height: 1.7;
+    }
+  </style>
 </head>
 <body>
-  <div class="logo-container">
-    <img src="WalesLogo.png" alt="Logo" class="page-logo">
+
+<div class="card">
+  <header>
+    <h1>Seat Projection</h1>
+    <p>Probability ranges · 96 total seats</p>
+  </header>
+
+  <div class="chart" id="chart">
+    <!-- majority line injected by JS -->
   </div>
 
-  <div class="flourish-container">
-    <iframe src="https://flo.uri.sh/visualisation/27084487/embed" scrolling="no" frameborder="0"></iframe>
+  <div class="legend">
+    <div class="legend-line"></div>
+    <span>Majority threshold (48 seats)</span>
   </div>
-  
-<div class="bar-container">
-<div class="majority-line">
-  <span class="majority-label">Majority</span>
 </div>
 
-  <iframe src="https://flo.uri.sh/visualisation/27084497/embed"
-          scrolling="no"
-          frameborder="0"></iframe>
-</div>
+<div class="tooltip" id="tooltip"></div>
 
+<script>
+  const TOTAL = 96;
+  const MAJORITY = 48;
 
-    <div class="graph-container">
-    <iframe src="https://flo.uri.sh/visualisation/27177225/embed" scrolling="no" frameborder="0"></iframe>
-  </div>
+  // Percentile columns: 5th 15th 25th AVG 75th 85th 95th
+  const parties = [
+    { name: "LAB", color: "#e4003B", data: [10, 11, 11, 12, 12, 13, 13] },
+    { name: "CON", color: "#0087DC", data: [ 6,  6,  8,  8,  9, 10, 10] },
+    { name: "PLC", color: "#005B54", data: [34, 34, 35, 37, 38, 38, 39] },
+    { name: "GRN", color: "#6AB023", data: [ 2,  2,  3,  4,  4,  5,  5] },
+    { name: "LDM", color: "#FAA61A", data: [ 1,  1,  1,  1,  2,  2,  2] },
+    { name: "RFM", color: "#34D8EF", data: [31, 31, 33, 34, 36, 36, 37] },
+  ];
+
+  // Sort parties by avg (index 3) descending
+  parties.sort((a, b) => b.data[3] - a.data[3]);
+
+  // Set the domain max explicitly — controls how far the bars extend
+  const domainMin = 0;
+  const domainMax = 50; // <-- change this to adjust bar scale
+
+  function pct(val) {
+    return ((val - domainMin) / (domainMax - domainMin)) * 100;
+  }
+
+  const chart = document.getElementById("chart");
+
+  // Majority line
+  const majPct = (MAJORITY / TOTAL) * 100;
+  // We'll place the majority line relative to the track area.
+  // The track area is the middle column of our grid. We'll inject it as an overlay.
+  // Instead, let's render it inside each track. Easier: add a pseudo element via a shared class.
+  // Actually we'll render it as a full-height absolute in the chart div, offset to the track area.
+
+  parties.forEach((party, i) => {
+    const [p5, p15, p25, avg, p75, p85, p95] = party.data;
+
+    const row = document.createElement("div");
+    row.className = "party-row";
+
+    // Label
+    const label = document.createElement("div");
+    label.className = "party-label";
+    label.innerHTML = `
+      <span class="party-dot" style="background:${party.color}"></span>
+      <span class="party-name">${party.name}</span>
+    `;
+
+    // Track
+    const trackWrap = document.createElement("div");
+    trackWrap.className = "track-wrap";
+
+    const trackBg = document.createElement("div");
+    trackBg.className = "track-bg";
+
+    const rangeOuter = document.createElement("div");
+    rangeOuter.className = "range-outer";
+    rangeOuter.style.cssText = `
+      left: ${pct(p5)}%;
+      width: ${pct(p95) - pct(p5)}%;
+      background: ${party.color};
+    `;
+
+    const rangeMid = document.createElement("div");
+    rangeMid.className = "range-mid";
+    rangeMid.style.cssText = `
+      left: ${pct(p15)}%;
+      width: ${pct(p85) - pct(p15)}%;
+      background: ${party.color};
+    `;
+
+    const rangeInner = document.createElement("div");
+    rangeInner.className = "range-inner";
+    rangeInner.style.cssText = `
+      left: ${pct(p25)}%;
+      width: ${pct(p75) - pct(p25)}%;
+      background: ${party.color};
+    `;
+
+    const avgLine = document.createElement("div");
+    avgLine.className = "avg-line";
+    avgLine.style.cssText = `left: ${pct(avg)}%;`;
+
+    trackWrap.append(trackBg, rangeOuter, rangeMid, rangeInner, avgLine);
+
+    // Majority line inside each track
+    const majLine = document.createElement("div");
+    majLine.style.cssText = `
+      position: absolute;
+      top: 0; bottom: 0;
+      left: ${pct(MAJORITY)}%;
+      width: 1px;
+      background: repeating-linear-gradient(
+        to bottom, #aaa 0px, #aaa 4px, transparent 4px, transparent 8px
+      );
+      z-index: 4;
+      pointer-events: none;
+    `;
+    trackWrap.appendChild(majLine);
+
+    // Seat info
+    const seatInfo = document.createElement("div");
+    seatInfo.className = "seat-info";
+    seatInfo.innerHTML = `
+      <span class="seat-count" style="color:${party.color}">${avg} seats</span>
+      <span class="seat-range-label">${p5}–${p95}</span>
+    `;
+
+    row.append(label, trackWrap, seatInfo);
+    chart.appendChild(row);
+
+    // Tooltip
+    const tooltip = document.getElementById("tooltip");
+    trackWrap.addEventListener("mousemove", e => {
+      tooltip.style.opacity = "1";
+      tooltip.style.left = (e.clientX + 14) + "px";
+      tooltip.style.top  = (e.clientY - 10) + "px";
+      tooltip.innerHTML = `
+        <strong style="color:${party.color}">${party.name}</strong><br>
+        Avg: ${avg} &nbsp;·&nbsp; Range: ${p5}–${p95}<br>
+        25th–75th: ${p25}–${p75}
+      `;
+    });
+    trackWrap.addEventListener("mouseleave", () => {
+      tooltip.style.opacity = "0";
+    });
+  });
+</script>
 </body>
-
 </html>
