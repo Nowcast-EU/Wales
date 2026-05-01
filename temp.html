@@ -358,7 +358,9 @@ const px = Math.round(
   trackWrap.offsetWidth
 );
 
-avgLine.style.left = `${px}px`;
+avgLine.style.cssText = `
+  left: calc(${pct(avg).toFixed(2)}% - 0.5px);
+`;
 
     trackWrap.append(trackBg, rangeOuter, rangeMid, rangeInner, avgLine);
 
